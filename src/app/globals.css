@@ -1,26 +1,83 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-100: #e0f2fe;
+  --primary-200: #bae6fd;
+  --primary-300: #7dd3fc;
+  --primary-400: #38bdf8;
+  --primary-500: #0ea5e9;
+  --primary-600: #0284c7;
+  --primary-700: #0369a1;
+  --primary-800: #075985;
+  --primary-900: #0c4a6e;
+  --primary-950: #082f49;
+
+  --surface-100: #f8fafc;
+  --surface-200: #f1f5f9;
+  --surface-300: #e2e8f0;
+  --surface-400: #cbd5e1;
+  --surface-500: #94a3b8;
+  --surface-600: #64748b;
+  --surface-700: #475569;
+  --surface-800: #334155;
+  --surface-900: #1e293b;
+  --surface-950: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+    font-family: var(--font-geist-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .dashboard-card {
+    @apply rounded-xl shadow-md bg-white p-5 transition-all;
+  }
+  
+  .metric-good {
+    @apply text-green-500;
+  }
+  
+  .metric-warning {
+    @apply text-yellow-500;
+  }
+  
+  .metric-critical {
+    @apply text-red-500;
+  }
+  
+  .nav-link {
+    @apply flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-all;
+  }
+  
+  .nav-link.active {
+    @apply bg-blue-100 text-blue-700;
+  }
+  
+  code {
+    font-family: var(--font-geist-mono);
+    @apply bg-gray-100 px-1 py-0.5 rounded;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--surface-500);
 }
